@@ -1,7 +1,7 @@
 # Commons
 
-[![Circle CI](https://circleci.com/gh/dreifadaoapp/commons.svg?style=shield)](https://circleci.com/gh/dreifadaoapp/commons)
-[![Licence Status](https://img.shields.io/github/license/dreifadaoapp/commons)](https://github.com/dreifadaoapp/commons/blob/master/licence.txt)
+[![Circle CI](https://circleci.com/gh/dreifadotapp/commons.svg?style=shield)](https://circleci.com/gh/dreifadotapp/commons)
+[![Licence Status](https://img.shields.io/github/license/dreifadotapp/commons)](https://github.com/dreifadotapp/commons/blob/master/licence.txt)
 
 ## What it does?
 
@@ -15,15 +15,15 @@ runtime JAR).
 ## Adding as a dependency
 
 Maven jars are deployed using [JitPack](https://jitpack.io/).
-See [releases](https://github.com/dreifadaoapp/commons/releases) for version details.
+See [releases](https://github.com/dreifadotapp/commons/releases) for version details.
 
 ```groovy
 //add jitpack repo
 maven { url "https://jitpack.io" }
 
 // add dependency 
-implementation "com.github.dreifadaoapp:commons:<release>"
+implementation "com.github.dreifadotapp:commons:<release>"
 ```
 
-_JitPack build status is at https://jitpack.io/com/github/dreifadaoapp/commons/$releaseTag/build.log_
+_JitPack build status is at https://jitpack.io/com/github/dreifadotapp/commons/$releaseTag/build.log_
 
