@@ -50,7 +50,7 @@ class ChaosTest {
         var maxDelay = 0L
         var minDelay = Long.MAX_VALUE
 
-        val chaos = dreifa.app.chaos.Chaos(dreifa.app.chaos.DelayUptoNTicks(PlatformTick.of(maxTicks)))
+        val chaos = Chaos(DelayUptoNTicks(PlatformTick.of(maxTicks)))
 
         // run enough times to get some good stats
         (1..attempts).forEach { _ ->

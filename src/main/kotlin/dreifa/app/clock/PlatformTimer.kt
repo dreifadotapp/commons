@@ -22,9 +22,9 @@ object PlatformTimer {
         return when (os) {
             "Mac OS X" -> 1 //  :-)
             "Linux" -> {
-                if (circleCI) 15 else 5 //  currently tuned for CircleCI
+                if (circleCI) 20 else 5 //  currently tuned for CircleCI
             }
-            else -> 20
+            else -> 50
         }
     }
 
