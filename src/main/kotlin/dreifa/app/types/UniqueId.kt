@@ -16,7 +16,7 @@ import java.util.*
  *    - 0..9
  *    - hyphen (-), underscore (_) and colon(:)
  */
-class UniqueId(private val id: String = UUID.randomUUID().toString()) {
+class UniqueId(val id: String = UUID.randomUUID().toString()) {
 
     init {
         // set some basic rules length rules
