@@ -3,7 +3,6 @@ package dreifa.app.types
 import dreifa.app.helpers.random
 import java.util.*
 
-
 /**
  * A generic encapsulation of a unique identifier that
  * can be generated in a range of formats like UUIDs or hashing
