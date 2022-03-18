@@ -18,10 +18,25 @@ class ListsTests {
         assertThat(list2, equalTo(list1))
         assertThat(list1 as Any, !equalTo(list3 as Any))    // same content, but different classes
         assertThat(list1, !equalTo(list4))  // same classes, but different content
-        assertThat(list1 as Any?, !equalTo(null as Any?) )  // null cannot be equal
+        assertThat(list1 as Any?, !equalTo(null as Any?))  // null cannot be equal
 
         // hashcode
         assertThat(list1.hashCode(), equalTo(list2.hashCode()))
+    }
+
+    @Test
+    fun `StringList tests`() {
+        // test listOf variants
+        assertThat(
+            StringList(listOf("Alice", "Bob")),
+            equalTo(StringList.listOf("Alice", "Bob"))
+        )
+
+        // is not equal to a regular list
+        assertThat(
+            StringList(listOf("Alice", "Bob")),
+            !equalTo(listOf("Alice", "Bob"))
+        )
     }
 
 }

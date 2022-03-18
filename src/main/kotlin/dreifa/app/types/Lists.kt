@@ -9,11 +9,40 @@ import kotlin.collections.ArrayList
  * of "erasures" losing information.
  */
 
-class StringList(data: List<String>) : ArrayList<String>(data)
-class LongList(data: List<Long>) : ArrayList<Long>(data)
-class DoubleList(data: List<Double>) : ArrayList<Double>(data)
-class UUIDList(data: List<UUID>) : ArrayList<UUID>(data)
-class UniqueIdList(data: List<UniqueId>) : ArrayList<UniqueId>(data)
+class StringList(data: List<String>) : ArrayList<String>(data) {
+    companion object {
+        fun empty() = StringList(emptyList())
+        fun listOf(vararg elements: String): StringList = StringList(elements.asList())
+    }
+}
+
+class LongList(data: List<Long>) : ArrayList<Long>(data) {
+    companion object {
+        fun empty() = LongList(emptyList())
+        fun listOf(vararg elements: Long): LongList = LongList(elements.asList())
+    }
+}
+
+class DoubleList(data: List<Double>) : ArrayList<Double>(data) {
+    companion object {
+        fun empty() = DoubleList(emptyList())
+        fun listOf(vararg elements: Double): DoubleList = DoubleList(elements.asList())
+    }
+}
+
+class UUIDList(data: List<UUID>) : ArrayList<UUID>(data) {
+    companion object {
+        fun empty() = UUIDList(emptyList())
+        fun listOf(vararg elements: UUID): UUIDList = UUIDList(elements.asList())
+    }
+}
+
+class UniqueIdList(data: List<UniqueId>) : ArrayList<UniqueId>(data) {
+    companion object {
+        fun empty() = UUIDList(emptyList())
+        fun listOf(vararg elements: UniqueId): UniqueIdList = UniqueIdList(elements.asList())
+    }
+}
 
 /**
  * A simple (and slightly inefficient) way of creating a truely immutable
