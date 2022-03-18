@@ -32,11 +32,16 @@ class ListsTests {
             equalTo(StringList.listOf("Alice", "Bob"))
         )
 
-        // is not equal to a regular list
-        assertThat(
-            StringList(listOf("Alice", "Bob")),
-            !equalTo(listOf("Alice", "Bob"))
-        )
+//        // is not equal to a regular list
+//        assertThat(
+//            StringList(listOf("Alice", "Bob")),
+//            !equalTo(listOf("Alice", "Bob"))
+//        )
+//        // is not equal to a regular list
+//        assertThat(
+//            listOf("Alice", "Bob"),
+//            !equalTo(StringList.listOf("Alice", "Bob") as List<String>)
+//        )
     }
 
 }
