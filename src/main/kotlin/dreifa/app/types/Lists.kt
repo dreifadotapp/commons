@@ -39,7 +39,7 @@ class UUIDList(data: List<UUID>) : ArrayList<UUID>(data) {
 
 class UniqueIdList(data: List<UniqueId>) : ArrayList<UniqueId>(data) {
     companion object {
-        fun empty() = UUIDList(emptyList())
+        fun empty() = UniqueIdList(emptyList())
         fun listOf(vararg elements: UniqueId): UniqueIdList = UniqueIdList(elements.asList())
     }
 }
