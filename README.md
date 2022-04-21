@@ -12,6 +12,14 @@ runtime JAR).
 * [xunitpatterns.com](./docs/xunitpatterns.md)
 * TODO - complete this list !
 
+## Dependencies
+
+As with everything in [Dreifa dot App](https://dreifa.app), this library has minimal dependencies:
+
+* Kotlin 1.5
+* Java 11
+
+
 ## Adding as a dependency
 
 Maven jars are deployed using [JitPack](https://jitpack.io/).
