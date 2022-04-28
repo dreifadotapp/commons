@@ -24,7 +24,7 @@ class KeyTests {
     @Test
     fun `should allow all supported characters`() {
         assertDoesNotThrow { Key.fromString("abcdefghijklmnopqrstuvwyyz") }
-        assertDoesNotThrow { Key.fromString("abcdefghijklmnopqrstuvwyyz".toUpperCase()) }
+        assertDoesNotThrow { Key.fromString("abcdefghijklmnopqrstuvwyyz".uppercase()) }
         assertDoesNotThrow { Key.fromString("1234567890") }
         assertDoesNotThrow { Key.fromString("-_:/") }
     }

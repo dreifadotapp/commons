@@ -22,7 +22,7 @@ class UniqueIdTests {
     @Test
     fun `should allow all supported characters`() {
         assertDoesNotThrow { UniqueId.fromString("abcdefghijklmnopqrstuvwyyz") }
-        assertDoesNotThrow { UniqueId.fromString("abcdefghijklmnopqrstuvwyyz".toUpperCase()) }
+        assertDoesNotThrow { UniqueId.fromString("abcdefghijklmnopqrstuvwyyz".uppercase()) }
         assertDoesNotThrow { UniqueId.fromString("1234567890") }
         assertDoesNotThrow { UniqueId.fromString("-_:") }
     }

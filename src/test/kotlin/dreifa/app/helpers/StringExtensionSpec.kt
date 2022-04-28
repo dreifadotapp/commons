@@ -17,7 +17,7 @@ class StringExtensionSpec {
         }
         (1..100).forEach {
             val random = String.random()
-            assertThat(random.toLowerCase(), equalTo(random)) { "random strings always in lowercase" }
+            assertThat(random.lowercase(), equalTo(random)) { "random strings always in lowercase" }
         }
     }
 
