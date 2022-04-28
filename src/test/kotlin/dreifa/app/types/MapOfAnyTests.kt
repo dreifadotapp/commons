@@ -69,7 +69,7 @@ class MapOfAnyTests {
 
         assertThrows<RuntimeException> {
             val dummy: String = testMap.castTo("anInt")
-            dummy  // stop compiler generating an unused param warning
+            dummy.length  // stop compiler generating an unused param warning
         }
     }
 
