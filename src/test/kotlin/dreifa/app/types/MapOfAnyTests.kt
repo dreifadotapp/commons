@@ -66,7 +66,11 @@ class MapOfAnyTests {
         assertThat("string", equalTo(aString))
         val anInt: Int = testMap.castTo("anInt")
         assertThat(1, equalTo(anInt))
-        assertThrows<RuntimeException> { val dummy: String = testMap.castTo("anInt") }
+
+        assertThrows<RuntimeException> {
+            val dummy: String = testMap.castTo("anInt")
+            dummy  // stop compiler generating an unused param warning
+        }
     }
 
 }
