@@ -23,7 +23,13 @@ data class CorrelationContext(
      * is enabled then it is generally enough for just one span to capture and log the correlation
      * data
      */
-    val propagate: Boolean = false
+    val propagate: Boolean = false,
+
+    /**
+     * Open Telemetry convention is that consistent attribute names are used
+     * by all systems.
+     */
+    val openTelemetryAttrName: String = "dreifa.correlation.$type"
 ) {
     constructor(type: String, id: String, propagate: Boolean = false) : this(type, UniqueId(id), propagate)
 
