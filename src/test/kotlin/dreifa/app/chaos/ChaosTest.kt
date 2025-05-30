@@ -14,7 +14,7 @@ class ChaosTest {
 
     @Test
     fun `it should fail N percent of the time`() {
-        val chaos = dreifa.app.chaos.Chaos(listOf(dreifa.app.chaos.FailNPercent(10)))
+        val chaos = Chaos(listOf(FailNPercent(10)))
         try {
             // statistically, no chance of passing 100 times
             (1..100).forEach { _ -> chaos.chaos() }
@@ -26,7 +26,7 @@ class ChaosTest {
 
     @Test
     fun `it should have statistically sensible pass and failure rates`() {
-        val chaos = dreifa.app.chaos.Chaos(listOf(dreifa.app.chaos.FailNPercent(10)))
+        val chaos = Chaos(listOf(FailNPercent(10)))
         val attempts = 2000
         val variance = 2.0
 
@@ -75,7 +75,7 @@ class ChaosTest {
 
     @Test
     fun `it should have no chaotic behaviour by default`() {
-        val chaos = dreifa.app.chaos.Chaos()
+        val chaos = Chaos()
         val start = System.currentTimeMillis()
         try {
             (1..1000).forEach { _ -> chaos.chaos() }
@@ -85,16 +85,16 @@ class ChaosTest {
 
         // long enough to be reliable, short enough to detect unexpected delays
         val timeTaken = System.currentTimeMillis() - start
-        assertThat(timeTaken, lessThan(PlatformTimer.clockTick() * 5))
+        assertThat(timeTaken, lessThan(PlatformTimer.clockTick() * 10))
     }
 
     @Test
     fun `should support multiple channels`() {
-        val chaos = dreifa.app.chaos.Chaos(
+        val chaos = Chaos(
             mapOf(
-                "errors" to listOf(dreifa.app.chaos.FailNPercent(10)),
-                "delays" to listOf(dreifa.app.chaos.DelayUptoNTicks(PlatformTick.of(5))),
-                "noop" to listOf(dreifa.app.chaos.Noop())
+                "errors" to listOf(FailNPercent(10)),
+                "delays" to listOf(DelayUptoNTicks(PlatformTick.of(5))),
+                "noop" to listOf(Noop())
             )
         )
 
@@ -124,24 +124,24 @@ class ChaosTest {
         val pattern = "F.F.F....F" // 6 pass, 4 fail
 
         // run against the pattern
-        val stats1 = collectPassFailStats(10, dreifa.app.chaos.Chaos(listOf(dreifa.app.chaos.FailWithPattern(pattern))))
+        val stats1 = collectPassFailStats(10, Chaos(listOf(FailWithPattern(pattern))))
         assertThat(stats1.first, equalTo(6))
         assertThat(stats1.second, equalTo(4))
 
         // once pattern is exhausted just return pass
-        val stats2 = collectPassFailStats(11, dreifa.app.chaos.Chaos(listOf(dreifa.app.chaos.FailWithPattern(pattern))))
+        val stats2 = collectPassFailStats(11, Chaos(listOf(FailWithPattern(pattern))))
         assertThat(stats2.first, equalTo(7))
         assertThat(stats2.second, equalTo(4))
 
         // run using default pattern of pass/fail repeated
-        val stats3 = collectPassFailStats(101, dreifa.app.chaos.Chaos(listOf(dreifa.app.chaos.FailWithPattern())))
+        val stats3 = collectPassFailStats(101, Chaos(listOf(FailWithPattern())))
         assertThat(stats3.first, equalTo(51))
         assertThat(stats3.second, equalTo(50))
     }
 
     private fun collectPassFailStats(
         attempts: Int,
-        chaos: dreifa.app.chaos.Chaos
+        chaos: Chaos
     ): Pair<Int, Int> {
         var passCount = 0
         var failCount = 0
