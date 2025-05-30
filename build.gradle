@@ -9,13 +9,11 @@ buildscript {
 }
 
 plugins {
-    id 'java'
     id "org.jetbrains.kotlin.jvm" version "$kotlinVersion"
-    //id("org.jetbrains.dokka") version "1.5.30"
 }
 
-apply plugin: 'kotlin'
-apply plugin: 'maven'
+//apply plugin: 'kotlin'
+//apply plugin: 'maven'
 
 repositories {
     mavenCentral()
@@ -23,22 +21,22 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
-    kotlinOptions {
-        jvmTarget = "11"
-    }
-}
+//tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
+//    kotlinOptions {
+//        jvmTarget = "11"
+//    }
+//}
 
-tasks.withType(Test).configureEach {
-    useJUnitPlatform()
-    reports { junitXml.setEnabled(true) }
-}
+//tasks.withType(Test).configureEach {
+//    useJUnitPlatform()
+//    reports { junitXml.setEnabled(true) }
+//}
 
-jar {
-    // Make JAR checksums hash repeatable
-    preserveFileTimestamps = false
-    reproducibleFileOrder = true
-}
+//jar {
+//    // Make JAR checksums hash repeatable
+//    preserveFileTimestamps = false
+//    reproducibleFileOrder = true
+//}
 
 dependencies {
     implementation("com.github.jitpack:gradle-simple:1.0")
@@ -59,4 +57,9 @@ test {
         events "passed", "skipped", "failed"
         exceptionFormat "full"
     }
+}
+
+tasks.named('test') {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
 }

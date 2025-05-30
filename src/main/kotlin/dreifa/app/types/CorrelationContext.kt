@@ -29,7 +29,7 @@ data class CorrelationContext(
      * Open Telemetry convention is that consistent attribute names are used
      * by all systems.
      */
-    val openTelemetryAttrName: String = "dreifa.correlation.$type"
+    val openTelemetryAttrName: String = "dreifa.app.correlation.$type"
 ) {
     constructor(type: String, id: String, propagate: Boolean = false) : this(type, UniqueId(id), propagate)
 
