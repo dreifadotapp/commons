@@ -1,6 +1,5 @@
 # Commons
 
-[![Circle CI](https://circleci.com/gh/dreifadotapp/commons.svg?style=shield)](https://circleci.com/gh/dreifadotapp/commons)
 [![Licence Status](https://img.shields.io/github/license/dreifadotapp/commons)](https://github.com/dreifadotapp/commons/blob/master/licence.txt)
 
 ## What it does?
