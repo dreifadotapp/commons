@@ -16,7 +16,7 @@ runtime JAR).
 
 As with everything in [Dreifa dot App](https://dreifa.app), this library has minimal dependencies:
 
-* Kotlin 1.5
+* Kotlin 1.8
 * Java 11
 
 

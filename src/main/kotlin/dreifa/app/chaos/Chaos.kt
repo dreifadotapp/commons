@@ -18,7 +18,7 @@ class FailNPercent(
     private val failurePercentage: Int = 10,
     private val exception: Exception = RuntimeException("unlucky, punk"),
     private val random: Random = Random
-) : dreifa.app.chaos.Chaotic {
+) : Chaotic {
     override fun `go ahead make my day`() {
         if (random.nextInt(100) < failurePercentage) throw exception
     }
@@ -30,7 +30,7 @@ class FailNPercent(
 class FailWithPattern(
     private val pattern: String = ".F".repeat(100),
     private val exception: Exception = RuntimeException("unlucky, punk")
-) : dreifa.app.chaos.Chaotic {
+) : Chaotic {
 
     init {
         if (pattern.replace("F", "").replace(".", "").isNotEmpty()) {
@@ -59,7 +59,7 @@ class DelayUptoNTicks(
     private val maxDelay: PlatformTick = PlatformTick.of(5),
     private val minDelay: PlatformTick = PlatformTick.of(0),
     private val random: Random = Random
-) : dreifa.app.chaos.Chaotic {
+) : Chaotic {
     override fun `go ahead make my day`() {
         val overallDelayMs = maxDelay.milliseconds() - minDelay.milliseconds()
         val randomDelay = random.nextLong(overallDelayMs)
@@ -67,14 +67,14 @@ class DelayUptoNTicks(
     }
 }
 
-class Noop : dreifa.app.chaos.Chaotic {
+class Noop : Chaotic {
     override fun `go ahead make my day`() {}
 }
 
-class Chaos(private val chaotics: Map<String, List<dreifa.app.chaos.Chaotic>>, private val ignoreWarnings: Boolean = false) {
-    constructor(chaotics: List<dreifa.app.chaos.Chaotic> = emptyList()) : this(mapOf("any" to chaotics))
-    constructor(chaotic: dreifa.app.chaos.Chaotic) : this(listOf(chaotic))
-    constructor() : this(dreifa.app.chaos.Noop())
+class Chaos(private val chaotics: Map<String, List<Chaotic>>, private val ignoreWarnings: Boolean = false) {
+    constructor(chaotics: List<Chaotic> = emptyList()) : this(mapOf("any" to chaotics))
+    constructor(chaotic: Chaotic) : this(listOf(chaotic))
+    constructor() : this(Noop())
 
     fun chaos(chaosType: String = "any") {
         val chaotics = this.chaotics[chaosType]
